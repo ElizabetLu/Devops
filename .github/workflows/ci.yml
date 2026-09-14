@@ -64,3 +64,9 @@ jobs:
 
       - name: Success
         run: echo "Website validation is successful"
+
+      - name: Check home.html
+        run: test -f home.html
+
+      - name: Failure
+        run: echo "Website validation failed"
