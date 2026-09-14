@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   hello:
@@ -21,7 +22,7 @@ jobs:
         run: test -f index.html
 
       - name: Say hello
-        run: echo "Hello from Github Actions!"
+        run: echo "Hello from GitHub Actions!"
 
       - name: Show current directory
         run: pwd
