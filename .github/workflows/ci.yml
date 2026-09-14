@@ -6,12 +6,44 @@ on:
       - main
 
 jobs:
-  hello:
+  check-html:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Check index.html
         working-directory: Homeworks/1-CI-CD_Pipelines
+        run: test -f index.html
+
+
+  check-css:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Check style.css
+        working-directory: Homeworks/1-CI-CD_Pipelines
+        run: test -f style.css
+
+
+  check-images:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Check photos directory
+        working-directory: Homeworks/1-CI-CD_Pipelines
+        run: test -d photos
+
+  
+  hello:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
@@ -21,7 +53,7 @@ jobs:
         run: test -f index.html
 
       - name: Say hello
-        run: echo "Hello from GitHub Actions!"
+        run: echo "Hello from Github Actions!"
 
       - name: Show current directory
         run: pwd
