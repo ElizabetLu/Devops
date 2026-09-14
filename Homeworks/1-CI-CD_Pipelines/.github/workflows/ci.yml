@@ -1,34 +1,33 @@
 name: CI
 
-on: 
-    push: 
-        branches: 
-            - main
+on:
+  push:
+    branches:
+      - main
 
+jobs:
+  hello:
+    runs-on: ubuntu-latest
 
-jobs: 
-    hello: 
-        runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Homeworks/1-CI-CD_Pipelines
 
-        defaults:
-         run:
-          working-directory: Homeworks/1-CI-CD_Pipelines
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
 
-        steps: 
-            - name: Checkout repository
-              uses: actions/checkout@v7
+      - name: Check index.html
+        run: test -f index.html
 
-            - name: Check index.html
-              run: test -f index.html
+      - name: Say hello
+        run: echo "Hello from Github Actions!"
 
-            - name: Say hello
-              run: echo "Hello from Github Actions!"
+      - name: Show current directory
+        run: pwd
 
-            - name: Show current directory
-              run: pwd
+      - name: Show files
+        run: ls -la
 
-            - name: Show files
-              run: ls -la 
-
-            - name: Success
-              run: echo "Website validation is successful"
+      - name: Success
+        run: echo "Website validation is successful"
